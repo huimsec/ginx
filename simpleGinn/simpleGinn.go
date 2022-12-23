@@ -2,8 +2,8 @@ package simpleGinn
 
 import (
 	"encoding/base64"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 	"os/exec"
 )
@@ -18,7 +18,8 @@ func zhaoll(c *gin.Context) {
 		out, err := cmd.CombinedOutput()
 		if err != nil {
 			//fmt.Printf("combined out:\n%s\n", string(out))
-			log.Fatalf("cmd.Run() failed with %s\n", err)
+			//log.Fatalf("cmd.Run() failed with %s\n", err)
+			fmt.Printf("cmd.Run() failed with %s\n", err)
 		}
 		c.String(http.StatusOK, string(out))
 	} else {
